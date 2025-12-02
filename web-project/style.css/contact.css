@@ -51,7 +51,7 @@ body{
     margin-left:100px;
     font-weight: bolder;
     font-size:50px;
-
+    background-color: rgb(32, 32, 32);
 }
 /*section*/
 
@@ -166,17 +166,21 @@ footer img{
     list-style: none;
 }
 .follow{
-    margin-right:end;
+    margin-left:750px;
      display: inline-block;
 }
 .follow img{
     border-radius: 100px;
     background-color: white;
     background-size: auto;
-    width:25px;
     
 }
-
+.follow h4{
+    margin-left: 20px;
+    font-size:20px;
+}
 .lower{
     padding-bottom: 30px;
 }
+
+
