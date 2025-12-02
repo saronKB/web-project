@@ -29,7 +29,7 @@ img{
     border-radius: 10px;
 }
 .hero{
-    height: 100vh;
+    height: 100vh ;
     background-image: url(assignment.jpg);
     background-size: cover;
     background-position: center;
@@ -47,9 +47,9 @@ img{
     font-size: 20px;
 }
 .hero-slides{
-    position: relative
+    position: relative;
     width: 100%;
-    height:80vh;
+    height:0;
     overflow: hidden;
 }
 .slide{
@@ -91,4 +91,134 @@ img{
 @keyframes fade{
     from{opacity: .4}
     to{opacity: 1}
+}
+.corner-slideshow {
+    position: fixed;
+    /* Sticks to the viewport */
+    bottom: 30px;
+    right: 30px;
+    width: 180px;
+    /* Reduced Frame Width (was 280px) */
+    height: 120px;
+    /* Reduced Frame Height (was 180px) */
+    z-index: 1000;
+    /* Ensures it is on top of other content */
+    overflow: hidden;
+    /* Important: hides the images before they slide in */
+}
+
+/* 2. Common style for all images/frames */
+.corner-slide {
+    position: absolute;
+    /* Stacks images on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures images fill the frame without stretching */
+
+    /* Frame Styling */
+    border: 3px solid #fff;
+    /* Reduced border size */
+    border-radius: 8px;
+    /* Slightly smaller radius */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    /* Smaller, softer shadow */
+
+    /* Animation Settings: 7 images * 4s each = 28s total duration */
+    animation: cornerSlideAnim 28s infinite;
+    animation-delay: var(--delay);
+    /* Uses the calculated delay from HTML */
+
+    /* Initial State: Hidden and pushed down-right */
+    opacity: 0;
+    transform: translate(50%, 50%) scale(0.9);
+}
+
+/* 3. The Animation Logic (Pure CSS Slideshow) - unchanged logic, just cleaner look */
+@keyframes cornerSlideAnim {
+
+    /* 0% (Start): Hidden, off-screen */
+    0% {
+        opacity: 0;
+        transform: translate(50%, 50%) scale(0.9);
+        z-index: 1;
+    }
+
+    /* 1% (Enter): Slide and scale into position, become visible */
+    1% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        z-index: 10;
+        /* Brings the current image to the front */
+    }
+
+    /* 14% (Hold): Stay Visible (approx 4 seconds out of 28) */
+    14% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        z-index: 10;
+    }
+
+    /* 15% (Exit): Fade out instantly and reset z-index */
+    15% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    /* 100% (Wait): Stay hidden until the animation loop restarts for this image */
+    100% {
+        opacity: 0;
+        transform: translate(50%, 50%) scale(0.9);
+    }
+}
+
+/* --- FOOTER STYLES (Improvement for aesthetics) --- */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 0;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    border-bottom: 2px solid aqua;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 14px;
+    color: #bdc3c7;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 8px;
+}
+
+.footer-section a:hover {
+    color: aqua;
 }
